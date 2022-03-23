@@ -86,6 +86,7 @@ const authenticate = async (req, res, next) => {
         res.status(201).send({ 
             token: token,
             data: {
+                id: user._id,
                 nome: user.username,
                 email: user.email,
             }

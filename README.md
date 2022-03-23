@@ -7,6 +7,19 @@ Api criado do zero para um sistema de troca de feedbacks!
 
 Esse projeto está sendo desenvolvida com nodejs x express e mongodb x mongoose 
 
+# !IMPORTANTE {
+    # node i  => para instalar as dependencias
+    # npm run dev => para rodar
+    # A tabela inbox é preenchiada automaticamente apartir do mmomento que faz um send
+    # Criar pasta .env com as seguintes variaveis
+    {
+        - DB_CONNECT_KEY = conectar com banco
+        - SALT_KEY = chave
+        - EMAIL_CODES = senha email
+        - EMAIL= email para enviar
+    }
+}
+
 
 # Rotas
 
