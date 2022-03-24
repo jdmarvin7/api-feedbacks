@@ -3,6 +3,10 @@
 
 Api criado do zero para um sistema de troca de feedbacks!
 
+# FINALIZADAA
+
+    # inbox não será mais usado no app tudo sera feito apenas com a coleção sends
+
 # TECNOLOGIAS
 
 Esse projeto está sendo desenvolvida com nodejs x express e mongodb x mongoose 
