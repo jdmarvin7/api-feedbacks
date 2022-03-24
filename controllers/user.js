@@ -162,5 +162,61 @@ const sendAndInbox = async (req, res, next) => {
     }
 }
 
+const sendWithToken = async (req, res, next) => {
+    const token = req.body.token || req.query.token || req.headers['x-access-token'];
+    const data = await decodeToken(token);
+
+    try {
+        const user = await User.findOne({
+            username: req.body.username
+        })
+        /*
+        transporter.sendMail({
+            from: 'jdmarvinmaeldestin02@gmail.com',
+            to: user.email,
+            subject: 'Cadastrado com sucesso!',
+            html: '<h1 style="color:green; text-align:center;">Seja Bem-vindo!!!</h1>'
+        }, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          }); */
+
+        try {
+            const send = await Send.create({
+                SendUsername: data.id,
+                InboxUsername: user.username,
+                pontoMelhorar: req.body.sends[0].pontoMelhorar,
+                pontoManter: req.body.sends[0].pontoManter,
+                sugestoes: req.body.sends[0].sugestoes,
+                feedbackFinal: req.body.sends[0].feedbackFinal
+            })
+            await Send.save;
+        } catch (err){
+            console.log(err);
+            res.status(404).json({ 
+                message: "Error saving"
+            })
+        }
+
+        /*
+        
+        */
+        res.status(201).send({
+            message: 'Mensagem enviado com sucesso!',
+        });
+
+    }catch(err){
+        console.log(err);
+
+        res.status(500).send('Falha na requicisão!');
+    }
+}
+
+
+
+
 
 module.exports = { getUser, updateUser, createUser, authenticate, getUserById, deleteUser, sendAndInbox };
