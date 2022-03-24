@@ -110,7 +110,7 @@ const deleteUser = async(req, res, next) => {
 }
 
 const sendAndInbox = async (req, res, next) => {
-    const token = req.query.token || req.body.token || req.headers['x-access-token'];
+    const token = req.body.token || req.query.token || req.headers['x-access-token'];
     const data = await decodeToken(token);
 
     try {
@@ -133,9 +133,7 @@ const sendAndInbox = async (req, res, next) => {
 
         try {
             const send = await Send.create({
-                idSendUsername: data.id,
-                SendUsername: data.username,
-                idInboxUsername: user._id,
+                SendUsername: data.id,
                 InboxUsername: user.username,
                 pontoMelhorar: req.body.sends[0].pontoMelhorar,
                 pontoManter: req.body.sends[0].pontoManter,
@@ -150,25 +148,9 @@ const sendAndInbox = async (req, res, next) => {
             })
         }
 
-        try {
-            const inbox = await Inbox.create({
-                idInboxUsername: user._id,
-                InboxUsername: user.username,
-                idSendUsername: data.id,
-                SendUsername: data.username,
-                pontoMelhorar: req.body.sends[0].pontoMelhorar,
-                pontoManter: req.body.sends[0].pontoManter,
-                sugestoes: req.body.sends[0].sugestoes,
-                feedbackFinal: req.body.sends[0].feedbackFinal
-            })
-            await Send.save;
-        } catch (err){
-            console.log(err);
-            res.status(404).json({ 
-                message: "Error saving"
-            })
-        }
-
+        /*
+        
+        */
         res.status(201).send({
             message: 'Mensagem enviado com sucesso!',
         });

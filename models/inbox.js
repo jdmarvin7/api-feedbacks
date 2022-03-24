@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    idInboxUsername: {
-        type: Schema.Types.ObjectId, ref: 'User',
-        required: true
-    },
     InboxUsername: {
         type: Schema.Types.String, ref: 'User',
     },

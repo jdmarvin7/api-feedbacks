@@ -35,10 +35,10 @@ const schema = new Schema({
     },
     sends: [{
         type: Schema.Types.ObjectId, ref: 'Send'
-    }],
+    }]/*
     inboxes: [{
         type: Schema.Types.ObjectId, ref: 'Inbox'
-    }]
+    }]*/
 });
 
 module.exports = mongoose.model('User', schema);

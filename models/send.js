@@ -3,17 +3,9 @@ const Schema = mongoose.Schema;
 const User = require('../models/user');
 
 const schema = new Schema({
-    idSendUsername: {
-        type: Schema.Types.ObjectId, ref: 'User',
-        required: true
-    },
     SendUsername: {
-        type: Schema.Types.String, ref: 'User',
-        required: true
-    },
-
-    idInboxUsername: {
         type: Schema.Types.ObjectId, ref: 'User',
+        required: true
     },
     InboxUsername: {
         type: Schema.Types.String, ref: 'User',
